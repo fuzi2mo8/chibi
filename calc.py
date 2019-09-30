@@ -1,4 +1,5 @@
 def calc(s):
     return s
 
-print(calc("1"))
+a=1+2
+print(calc(a))
