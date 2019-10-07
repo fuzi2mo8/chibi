@@ -8,8 +8,14 @@ class Q(object):
             return str(self.a)
         return str(self.a) + '/' + str(self.b)
 
-    
+    def add(self,q):
+        a = self.a 
+        b = self.b
+        c = q.a
+        d = q.b
+        return Q(a*d+b*c,b*d)
         
 
-q = Q(3)
-print(q)
+q1 = Q(1,2)
+q2 = Q(1,3)
+print(q1.add(q2))
