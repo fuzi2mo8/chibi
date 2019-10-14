@@ -8,5 +8,19 @@ class Val(object):
         return self.value
 
 v = Val(1)
-print(v)
 assert v.eval() == 1
+
+class Add(object):
+    __slot__=['left','right']
+    def __init__(self,a,b):
+        self.left = a
+        self.right = b
+    def eval (self):
+        return self.left.eval() + self.right.eval()
+
+v = Add(Add(Val(1),Val(2)),Val(3))
+e = Add(Add(1,2),3)
+print(v.eval())
+print(e.eval())
+assert v.eval()
+
