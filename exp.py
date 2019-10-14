@@ -3,7 +3,10 @@ class Val(object):
     def __init__(self, v=0):
         self.value = v
     def __repr__(self):
-        returen f'Val({self.value})'
+        return f'Val({self.value})'
+    def eval(self):
+        return self.value
 
-e = Val(1)
-e.eval()
+v = Val(1)
+print(v)
+assert v.eval() == 1
