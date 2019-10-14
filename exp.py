@@ -1,4 +1,7 @@
-class Val(object):
+class Expr(object):
+    pass
+
+class Val(Expr):
     __slots__ = ['value']
     def __init__(self, v=0):
         self.value = v
@@ -10,7 +13,7 @@ class Val(object):
 v = Val(1)
 assert v.eval() == 1
 
-class Add(object):
+class Add(Expr):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = a
@@ -18,7 +21,7 @@ class Add(object):
     def eval (self):
         return self.left.eval() + self.right.eval()
 
-class Mul(object):
+class Mul(Expr):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = a
@@ -26,7 +29,7 @@ class Mul(object):
     def eval (self):
         return self.left.eval() * self.right.eval()
 
-class Sub(object):
+class Sub(Expr):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = a
@@ -34,7 +37,7 @@ class Sub(object):
     def eval (self):
         return self.left.eval() - self.right.eval()
 
-class Div(object):
+class Div(Expr):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = a
@@ -48,3 +51,5 @@ v = Div(Div(Val(6),Val(2)),Val(3))
 print(v.eval())
 assert v.eval()
 
+assert isinstance(Val(1),Expr)
+assert isinstance(Div(Val(7),Val(2)),Expr)
