@@ -23,7 +23,7 @@ def toExpr(a):
         a = Val(a)
     return a
 
-class Add(Expr):
+class Add(Binary):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = toExpr(a)
@@ -31,7 +31,7 @@ class Add(Expr):
     def eval (self):
         return self.left.eval() + self.right.eval()
 
-class Mul(Expr):
+class Mul(Binary):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = toExpr(a)
@@ -39,7 +39,7 @@ class Mul(Expr):
     def eval (self):
         return self.left.eval() * self.right.eval()
 
-class Sub(Expr):
+class Sub(Binary):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = toExpr(a)
@@ -47,7 +47,7 @@ class Sub(Expr):
     def eval (self):
         return self.left.eval() - self.right.eval()
 
-class Div(Expr):
+class Div(Binary):
     __slot__=['left','right']
     def __init__(self,a,b):
         self.left = toExpr(a)
