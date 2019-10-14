@@ -18,9 +18,33 @@ class Add(object):
     def eval (self):
         return self.left.eval() + self.right.eval()
 
-v = Add(Add(Val(1),Val(2)),Val(3))
-e = Add(Add(1,2),3)
+class Mul(object):
+    __slot__=['left','right']
+    def __init__(self,a,b):
+        self.left = a
+        self.right = b
+    def eval (self):
+        return self.left.eval() * self.right.eval()
+
+class Sub(object):
+    __slot__=['left','right']
+    def __init__(self,a,b):
+        self.left = a
+        self.right = b
+    def eval (self):
+        return self.left.eval() - self.right.eval()
+
+class Div(object):
+    __slot__=['left','right']
+    def __init__(self,a,b):
+        self.left = a
+        self.right = b
+    def eval (self):
+        return self.left.eval() / self.right.eval()
+
+
+
+v = Div(Div(Val(6),Val(2)),Val(3))
 print(v.eval())
-print(e.eval())
 assert v.eval()
 
