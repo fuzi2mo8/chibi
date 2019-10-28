@@ -10,18 +10,18 @@ class Val(Expr):
     def eval(self):
         return self.value
 
-class Binary(Expr):
-    def __repr__(self):
-        classname = self.__class__.__name__
-        return f'{classname}({self.left},{self.right})'
-
-v = Val(1)
-assert v.eval() == 1
+#v = Val(1)
+#assert v.eval() == 1
 
 def toExpr(a):
     if not isinstance(a,Expr):
         a = Val(a)
     return a
+
+class Binary(Expr):
+    def __repr__(self):
+        classname = self.__class__.__name__
+        return f'{classname}({self.left},{self.right})'
 
 class Add(Binary):
     __slot__=['left','right']
@@ -57,9 +57,9 @@ class Div(Binary):
 
 
 
-v = Div(Div(6,2),3)
-print(v.eval())
-assert v.eval()
+#v = Div(Div(6,2),3)
+#print(v.eval())
+#assert v.eval()
 
 #assert isinstance(Val(1),Expr)
 #assert isinstance(Div(Val(7),Val(2)),Expr)
