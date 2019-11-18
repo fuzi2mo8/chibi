@@ -1,10 +1,9 @@
 
-example Expr 1+2*3
+example Expr (1+2)*3
+example Expr 1*2+3
 
-Expr = { Value '+' Expr #Add }
-     / { Value '*' Expr #Mul }
-     / Value
+Expr = { Prop '+' Prop #Add } /Prop 
+Prop = { Value '*' Value #Mul } /Value
 
-
-Value = { DIGHT+ #Int }
+Value = { DIGHT+ #Int } / '(' Expr ')'
 DIGHT = [0-9]
