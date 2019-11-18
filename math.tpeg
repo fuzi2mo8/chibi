@@ -1,0 +1,9 @@
+example Zip 141-0001
+
+Zip = {
+    Value '-' Value
+    #Zip
+}
+
+Value = {DOGHT + #Int}
+DIGHT = [0-9]
