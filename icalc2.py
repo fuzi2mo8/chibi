@@ -24,15 +24,12 @@ def calc(t):
 #print(repr(t))
 #print(calc(t))
 
-def main():
-    while(True):
-        s = input('$')
-        t = parser(s)
-        if (s == 'end'):
-            break
-        print(calc(t))
 
-    
+
+def main():
+    s = input('$')
+    t = parser(s)
+    calc(t)
 
 if __name__ == '__main__':
     main()
