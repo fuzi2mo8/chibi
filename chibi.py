@@ -56,7 +56,7 @@ class Mod(Binary):
         return self.left.eval(env) % self.right.eval(env)
 
 class Var(Expr):
-    ___slots__ = ['name']
+    __slot__ = ['name']
 
     def __init__(self,name:str):
         self.name = name
@@ -64,13 +64,23 @@ class Var(Expr):
     def eval(self,env:dict):
         if self.name in env:
             return env[self.name]
-        return 0
+        raise NameError(self.name)
 
+class Assign(Expr):
+    __slot__ = ['name','e']
+    def __init__(self,name,e):
+        self.name = name
+        self.e = Expr.new(e)
 
-print('test')
-e = Var('x')
-print(e.eval({}))
+    def eval(self,env):
+        env[self.name] = self.e.eval(env)
+        return env[self.name]
 
+env = {}
+e = Assign('x',Val(1))
+print(e.eval(env))
+e = Assign('x',Add(Var('x'),Val(2)))
+print(e.eval(env))
 
 def conv(tree):
     if tree == 'Block':
